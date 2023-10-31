@@ -1,0 +1,29 @@
+# Carpeta bin y obj generada por compilaciones
+bin/
+obj/
+
+# Archivos temporales
+*.suo
+*.user
+*.sln.docstates
+
+# Carpeta de caché NuGet
+.vscode/
+.idea/
+.vs/
+.history/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Carpeta y archivos de caché de Rider
+.idea/
+.suo
+.user
+.suo
+.userosscache
+
+# Carpeta y archivos de caché de Visual Studio Code
+.vscode/
+.history/
