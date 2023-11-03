@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitacoraAuto3DAPI", "BitacoraAuto3DAPI\BitacoraAuto3DAPI.csproj", "{94DA9AAB-41E8-49F9-A214-EB07D7D5798D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitacoraAuto3DAPI", "BitacoraAuto3DAPI\BitacoraAuto3DAPI.csproj", "{94DA9AAB-41E8-49F9-A214-EB07D7D5798D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BitacoraAuto3D.Db.Models", "BitacoraAuto3D.Db.Models\BitacoraAuto3D.Db.Models.csproj", "{A5B58942-6421-424D-ABAF-8C021EA03227}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitacoraAuto3D.Infraestructure", "BitacoraAuto3D.Infraestructure\BitacoraAuto3D.Infraestructure.csproj", "{7964D0BE-5256-469F-8292-2583809EDF93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{94DA9AAB-41E8-49F9-A214-EB07D7D5798D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94DA9AAB-41E8-49F9-A214-EB07D7D5798D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94DA9AAB-41E8-49F9-A214-EB07D7D5798D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5B58942-6421-424D-ABAF-8C021EA03227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5B58942-6421-424D-ABAF-8C021EA03227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5B58942-6421-424D-ABAF-8C021EA03227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5B58942-6421-424D-ABAF-8C021EA03227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7964D0BE-5256-469F-8292-2583809EDF93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7964D0BE-5256-469F-8292-2583809EDF93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7964D0BE-5256-469F-8292-2583809EDF93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7964D0BE-5256-469F-8292-2583809EDF93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
