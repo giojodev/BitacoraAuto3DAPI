@@ -1,21 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BitacoraAuto3D.Db.Models.Models;
+#nullable disable
 
-public partial class Usuario
+namespace BitacoraAuto3D.Db.Models.Models
 {
-    public int Id { get; set; }
-
-    public string Usuario1 { get; set; } = null!;
-
-    public byte[] Contrasena { get; set; } = null!;
-
-    public string NombreCompleto { get; set; } = null!;
-
-    public int PerfilId { get; set; }
-
-    public virtual ICollection<Comentario> Comentarios { get; set; } = new List<Comentario>();
-
-    public virtual Perfil Perfil { get; set; } = null!;
+    public partial class Usuario
+    {
+        public int Id { get; set; }
+        public string Usuario1 { get; set; }
+        public byte[] Contrasena { get; set; }
+        public string NombreCompleto { get; set; }
+    }
 }
