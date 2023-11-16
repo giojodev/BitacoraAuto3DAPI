@@ -39,6 +39,14 @@ namespace BitacoraAuto3DAPI.Controllers
                 return BadRequest(result.Message);
             return Ok(result);
         }
+        [HttpPut("Procedure/UpdateClients")]
+        public async Task<IActionResult> UpdateClients(UpdateClientDTO model)
+        {
+            var result = await _procedureservices.UpdateClients(model);
+            if(result.Error)
+                return BadRequest(result.Message);
+            return Ok(result);
+        }
 
     }
 }

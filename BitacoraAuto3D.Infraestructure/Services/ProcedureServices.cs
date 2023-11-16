@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BitacoraAuto3D.Db.Models.Models;
 using BitacoraAuto3D.Infraestructure.DTO;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -12,6 +13,7 @@ namespace BitacoraAuto3D.Infraestructure.Services
     public interface IProcedureServices
     {
         Task<BaseResult> AddClients(ClientsDTO model);
+        Task<BaseResult> UpdateClients(UpdateClientDTO model);
     }
     public class ProcedureServices:IProcedureServices
     {
@@ -45,6 +47,28 @@ namespace BitacoraAuto3D.Infraestructure.Services
             }
 
             
+        }
+        public async Task<BaseResult> UpdateClients(UpdateClientDTO model)
+        {
+            try
+            {
+                var user= await _bitacoraContext.Clientes.Where(x=>x.IdCliente==model.idCliente).FirstAsync();
+                if(user==null)
+                    return new BaseResult(){ Message="No fue encontrado el cliente",Saved=false,Error=true};
+                
+                user.Nombre=model.nombre;
+                user.Telefono=model.telefono;
+                user.Correo=model.correo;
+                _bitacoraContext.Entry(user).State=EntityState.Modified;
+                await _bitacoraContext.SaveChangesAsync();
+
+                return new BaseResult(){ Message="Usuario actualizado con exito",Saved=true,Error=false};
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Error al actualizar cliente",ex);
+                return new BaseResult(){ Message=$"Ocurrio un problema {ex.Message}",Saved=false,Error=true};
+            }
         }
     }
     public static class ProcedureServicesExtensions
