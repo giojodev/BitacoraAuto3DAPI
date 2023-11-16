@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BitacoraAuto3D.Db.Models.Models;
 using BitacoraAuto3D.Infraestructure.DTO;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace BitacoraAuto3D.Infraestructure.Services
 {
@@ -15,10 +16,12 @@ namespace BitacoraAuto3D.Infraestructure.Services
     public class ProcedureServices:IProcedureServices
     {
         private readonly BITACORA3DContext _bitacoraContext;
+        private readonly ILogger<IProcedureServices> _logger;
         
-        public ProcedureServices(BITACORA3DContext bitacora3DContext)
+        public ProcedureServices(BITACORA3DContext bitacora3DContext,ILogger<IProcedureServices> logger)
         {
             _bitacoraContext=bitacora3DContext;
+            _logger=logger;
         }
         public async Task<BaseResult> AddClients(ClientsDTO model)
         {
@@ -37,6 +40,7 @@ namespace BitacoraAuto3D.Infraestructure.Services
             }
             catch(Exception ex)
             {
+                _logger.LogError("Error al añadir cliente",ex);
                 return new BaseResult(){ Message=$"Ocurrio un problema {ex.Message}",Saved=false,Error=true};
             }
 

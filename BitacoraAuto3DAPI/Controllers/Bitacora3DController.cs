@@ -16,11 +16,13 @@ namespace BitacoraAuto3DAPI.Controllers
         
         private readonly ICatalogServices _catalogservices;
         private readonly IProcedureServices _procedureservices;
+        private readonly ILogger<Bitacora3DController> _logger;
 
-        public Bitacora3DController(ICatalogServices catalogServices,IProcedureServices procedureServices)
+        public Bitacora3DController(ICatalogServices catalogServices,IProcedureServices procedureServices,ILogger<Bitacora3DController>logger)
         {
             _catalogservices=catalogServices;
             _procedureservices=procedureServices;
+            _logger=logger;
         }
         
         [HttpGet("Catalog/ListClients")]
