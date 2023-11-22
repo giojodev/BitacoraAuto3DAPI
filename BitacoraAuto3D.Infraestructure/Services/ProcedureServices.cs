@@ -38,7 +38,7 @@ namespace BitacoraAuto3D.Infraestructure.Services
                 await _bitacoraContext.Clientes.AddAsync(cliente);
                 _bitacoraContext.SaveChanges();
 
-                return new BaseResult(){ Message="Usuario creado con exito",Saved=true,Error=false};
+                return new BaseResult(){ Message="Usuario creado con exito",Saved=true,Error=false, StatusCode=System.Net.HttpStatusCode.Created};
             }
             catch(Exception ex)
             {
@@ -54,7 +54,7 @@ namespace BitacoraAuto3D.Infraestructure.Services
             {
                 var user= await _bitacoraContext.Clientes.Where(x=>x.IdCliente==model.idCliente).FirstAsync();
                 if(user==null)
-                    return new BaseResult(){ Message="No fue encontrado el cliente",Saved=false,Error=true};
+                    return new BaseResult(){ Message="No fue encontrado el cliente",Saved=false,Error=true,StatusCode=System.Net.HttpStatusCode.NotFound};
                 
                 user.Nombre=model.nombre;
                 user.Telefono=model.telefono;
@@ -70,7 +70,28 @@ namespace BitacoraAuto3D.Infraestructure.Services
                 return new BaseResult(){ Message=$"Ocurrio un problema {ex.Message}",Saved=false,Error=true};
             }
         }
+         public async Task<BaseResult> DeleteClients(int idclient)
+        {
+            try
+            {
+                var client= await _bitacoraContext.Clientes.Where(x=>x.IdCliente==idclient).FirstAsync();
+                if (client == null)
+                    return new BaseResult(){Message="No fue encontrado un client"};
+
+                _bitacoraContext.Entry(client).State=EntityState.Deleted;
+                _bitacoraContext.SaveChanges();
+                
+                return new BaseResult(){Message="Registro eliminado exitosamente.", Error=false, StatusCode=System.Net.HttpStatusCode.OK};
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Error al eliminar cliente",ex);
+                return new BaseResult(){ Message=$"Ocurrio un problema {ex.Message}",Saved=false,Error=true};
+            }
+            
+        }
     }
+   
     public static class ProcedureServicesExtensions
     {
         public static IServiceCollection AddProcedureServices(this IServiceCollection Services){
